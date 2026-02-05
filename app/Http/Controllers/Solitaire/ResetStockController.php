@@ -24,6 +24,7 @@ class ResetStockController extends Controller
                     'status' => $game->status->value,
                     'moveCount' => $game->move_count,
                     'score' => $game->score,
+                    'elapsedSeconds' => $game->elapsed_seconds,
                     'state' => $game->state,
                 ],
             ]);

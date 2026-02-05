@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { formatTime } from '@/types/solitaire';
+
 defineProps<{
     moveCount: number;
     score: number;
+    elapsedSeconds: number;
 }>();
 
 const emit = defineEmits<{
@@ -29,14 +32,18 @@ const emit = defineEmits<{
                 NEW
             </button>
         </div>
-        <div class="flex items-center justify-center gap-4 sm:gap-6">
+        <div class="flex items-center justify-center gap-2 sm:gap-6">
             <div class="flex items-center gap-1.5 sm:gap-2">
-                <span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500 sm:text-xs">Moves</span>
-                <span class="text-base font-bold tabular-nums text-white sm:text-lg">{{ moveCount }}</span>
+                <span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500 sm:text-xs">Time</span>
+                <span class="text-base font-bold tabular-nums text-white sm:text-lg">{{ formatTime(elapsedSeconds) }}</span>
             </div>
             <div class="flex items-center gap-1.5 sm:gap-2">
                 <span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500 sm:text-xs">Score</span>
                 <span class="text-base font-bold tabular-nums text-white sm:text-lg">{{ score }}</span>
+            </div>
+            <div class="flex items-center gap-1.5 sm:gap-2">
+                <span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500 sm:text-xs">Moves</span>
+                <span class="text-base font-bold tabular-nums text-white sm:text-lg">{{ moveCount }}</span>
             </div>
             <button
                 class="hidden items-center gap-2 bg-[#38bdf8] px-4 py-2 text-sm font-semibold tracking-wider text-[#0c1929] transition-colors hover:bg-[#7dd3fc] sm:flex"
