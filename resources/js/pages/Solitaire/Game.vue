@@ -14,9 +14,10 @@ const props = defineProps<{
 
 const gameState = ref(props.game);
 const { startDrag, getDragData, endDrag } = useDragAndDrop();
-const { makeMove, drawCard, resetStock, createNewGame, loading } = useGameActions(props.game.id);
+const { makeMove, drawCard, resetStock, undoMove, createNewGame, loading } = useGameActions(props.game.id);
 
 const isWon = computed(() => gameState.value.status === 'won');
+const canUndo = computed(() => gameState.value.canUndo ?? false);
 
 async function handleDraw() {
     if (loading.value) return;
@@ -98,6 +99,14 @@ function handleTableauDoubleClick(tableauIndex: number, cardIndex: number) {
     }
 }
 
+async function handleUndo() {
+    if (loading.value) return;
+    const result = await undoMove();
+    if (result) {
+        gameState.value = result;
+    }
+}
+
 function handleNewGame() {
     createNewGame();
 }
@@ -108,7 +117,7 @@ function handleNewGame() {
     <div class="min-h-screen bg-slate-50 bg-[radial-gradient(circle,_#e2e8f0_1px,_transparent_1px)] bg-[size:20px_20px]">
         <div class="mx-auto max-w-4xl px-4 py-6">
             <div class="mb-6">
-                <GameControls :move-count="gameState.moveCount" :score="gameState.score" @new-game="handleNewGame" />
+                <GameControls :move-count="gameState.moveCount" :score="gameState.score" :can-undo="canUndo" @new-game="handleNewGame" @undo="handleUndo" />
             </div>
             <div class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-lg backdrop-blur">
                 <GameBoard
