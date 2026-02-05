@@ -19,15 +19,6 @@ const firstFaceUpIndex = computed(() => {
     return idx >= 0 ? idx : props.cards.length;
 });
 
-const stackHeight = computed(() => {
-    if (props.cards.length === 0) return 100;
-    let height = 100;
-    for (let i = 1; i < props.cards.length; i++) {
-        height += props.cards[i - 1].faceUp ? 20 : 4;
-    }
-    return height;
-});
-
 function handleDragOver(event: DragEvent) {
     event.preventDefault();
 }
@@ -41,15 +32,14 @@ function handleDrop(event: DragEvent) {
 <template>
     <div
         class="relative w-[70px]"
-        :style="{ minHeight: `${stackHeight}px` }"
         @dragover="handleDragOver"
         @drop="handleDrop"
     >
         <div
             v-if="cards.length === 0"
-            class="flex h-[100px] w-full items-center justify-center rounded-lg border-2 border-dashed border-slate-200 bg-slate-50/30"
+            class="flex h-[100px] w-full items-center justify-center rounded-lg border-2 border-dashed border-[#38bdf8]/20 bg-[#1e3a5f]/10"
         >
-            <span class="text-2xl font-bold text-slate-200">K</span>
+            <span class="text-2xl font-bold text-[#38bdf8]/30">K</span>
         </div>
         <CardStack
             v-else

@@ -104,13 +104,19 @@ function handleNewGame() {
 </script>
 
 <template>
-    <Head title="Klondike Solitaire" />
-    <div class="min-h-screen bg-slate-50 bg-[radial-gradient(circle,_#e2e8f0_1px,_transparent_1px)] bg-[size:20px_20px]">
-        <div class="mx-auto max-w-4xl px-4 py-6">
+    <Head title="Klondike Solitaire">
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link href="https://fonts.bunny.net/css?family=jetbrains-mono:400,500,600,700" rel="stylesheet" />
+    </Head>
+    <div class="min-h-screen bg-[#0c1929] font-mono">
+        <!-- Background grid pattern -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e3a5f20_1px,transparent_1px),linear-gradient(to_bottom,#1e3a5f20_1px,transparent_1px)] bg-[size:40px_40px]" />
+
+        <div class="relative mx-auto max-w-4xl px-4 py-6">
             <div class="mb-6">
                 <GameControls :move-count="gameState.moveCount" :score="gameState.score" @new-game="handleNewGame" />
             </div>
-            <div class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-lg backdrop-blur">
+            <div class="rounded-xl border border-[#38bdf8]/30 bg-[#0c1929]/80 p-6 backdrop-blur">
                 <GameBoard
                     :state="gameState.state"
                     @draw="handleDraw"
@@ -128,3 +134,9 @@ function handleNewGame() {
     </div>
     <WinOverlay v-if="isWon" :move-count="gameState.moveCount" @new-game="handleNewGame" />
 </template>
+
+<style scoped>
+* {
+    font-family: 'JetBrains Mono', monospace;
+}
+</style>

@@ -45,9 +45,9 @@ function handleDragStart(event: DragEvent) {
         <div
             v-if="!topCard"
             class="flex h-full w-full items-center justify-center rounded-lg border-2 border-dashed transition-colors"
-            :class="isRed ? 'border-red-200 bg-red-50/30' : 'border-slate-200 bg-slate-50/30'"
+            :class="isRed ? 'border-red-500/30 bg-red-500/10' : 'border-slate-400/30 bg-slate-400/10'"
         >
-            <span class="text-3xl opacity-30" :class="isRed ? 'text-red-300' : 'text-slate-300'">
+            <span class="text-3xl" :class="isRed ? 'text-red-500/40' : 'text-slate-400/40'">
                 {{ suitSymbol }}
             </span>
         </div>

@@ -30,7 +30,7 @@ function handleDblClick() {
     <div class="relative h-[100px] w-[70px]">
         <div
             v-if="cards.length === 0"
-            class="flex h-full w-full items-center justify-center rounded-lg border-2 border-dashed border-slate-200 bg-slate-50/50"
+            class="flex h-full w-full items-center justify-center rounded-lg border-2 border-dashed border-[#1e3a5f]/50 bg-[#1e3a5f]/10"
         />
         <div v-else class="relative">
             <div

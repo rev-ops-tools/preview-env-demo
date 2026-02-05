@@ -38,12 +38,12 @@ function handleDragStart(event: DragEvent) {
 
 <template>
     <div
-        class="flex h-[100px] w-[70px] select-none flex-col rounded-lg border shadow-md transition-all duration-150"
+        class="flex h-[100px] w-[70px] select-none flex-col rounded-lg border shadow-lg transition-all duration-150"
         :class="[
             showFace
-                ? 'cursor-pointer border-slate-200 bg-white hover:shadow-lg'
-                : 'cursor-default border-sky-600 bg-sky-500',
-            selected ? 'ring-2 ring-sky-400 ring-offset-2' : '',
+                ? 'cursor-pointer border-slate-300 bg-white hover:shadow-xl'
+                : 'cursor-default border-[#38bdf8]/50 bg-gradient-to-br from-[#1e3a5f] to-[#0c1929]',
+            selected ? 'ring-2 ring-[#38bdf8] ring-offset-2 ring-offset-[#0c1929]' : '',
             draggable && showFace ? 'cursor-grab active:cursor-grabbing' : '',
         ]"
         :draggable="draggable && showFace"
@@ -68,9 +68,11 @@ function handleDragStart(event: DragEvent) {
         </template>
         <template v-else>
             <div class="flex h-full items-center justify-center">
-                <div
-                    class="h-[80px] w-[54px] rounded border border-sky-400/50 bg-[repeating-linear-gradient(45deg,transparent,transparent_4px,rgba(255,255,255,0.1)_4px,rgba(255,255,255,0.1)_8px)]"
-                />
+                <div class="flex flex-col items-center gap-1">
+                    <div class="h-1 w-10 rounded bg-[#38bdf8]/30" />
+                    <div class="h-1 w-8 rounded bg-[#38bdf8]/30" />
+                    <div class="h-1 w-10 rounded bg-[#38bdf8]/30" />
+                </div>
             </div>
         </template>
     </div>

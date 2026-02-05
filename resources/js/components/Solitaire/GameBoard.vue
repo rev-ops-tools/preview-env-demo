@@ -20,6 +20,9 @@ const emit = defineEmits<{
     wasteDoubleClick: [card: Card];
     tableauDoubleClick: [tableauIndex: number, cardIndex: number];
 }>();
+
+// Fixed height for tableau area: 6 face-down (6*4=24) + 12 face-up offsets (12*20=240) + card height (100) = 364px
+const TABLEAU_AREA_HEIGHT = 364;
 </script>
 
 <template>
@@ -39,11 +42,13 @@ const emit = defineEmits<{
                 @card-drag-start="(suit, event, card) => emit('foundationDragStart', suit, event, card)"
             />
         </div>
-        <Tableaus
-            :tableaus="state.tableaus"
-            @drop="(index, event) => emit('moveToTableau', index, event)"
-            @card-drag-start="(index, event, cardIndex, cards) => emit('tableauDragStart', index, event, cardIndex, cards)"
-            @card-dbl-click="(index, cardIndex) => emit('tableauDoubleClick', index, cardIndex)"
-        />
+        <div :style="{ minHeight: `${TABLEAU_AREA_HEIGHT}px` }">
+            <Tableaus
+                :tableaus="state.tableaus"
+                @drop="(index, event) => emit('moveToTableau', index, event)"
+                @card-drag-start="(index, event, cardIndex, cards) => emit('tableauDragStart', index, event, cardIndex, cards)"
+                @card-dbl-click="(index, cardIndex) => emit('tableauDoubleClick', index, cardIndex)"
+            />
+        </div>
     </div>
 </template>
