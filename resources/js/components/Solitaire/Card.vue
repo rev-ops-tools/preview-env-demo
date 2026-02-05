@@ -9,12 +9,14 @@ const props = withDefaults(
         faceUp?: boolean;
         draggable?: boolean;
         selected?: boolean;
+        highlighted?: boolean;
     }>(),
     {
         card: null,
         faceUp: false,
         draggable: false,
         selected: false,
+        highlighted: false,
     },
 );
 
@@ -44,6 +46,7 @@ function handleDragStart(event: DragEvent) {
                 ? 'cursor-pointer border-slate-300 bg-white hover:shadow-xl'
                 : 'cursor-default border-[#38bdf8]/50 bg-gradient-to-br from-[#1e3a5f] to-[#0c1929]',
             selected ? 'ring-2 ring-[#38bdf8] ring-offset-2 ring-offset-[#0c1929]' : '',
+            highlighted ? 'ring-2 ring-amber-400 ring-offset-2 ring-offset-[#0c1929] animate-pulse' : '',
             draggable && showFace ? 'cursor-grab active:cursor-grabbing' : '',
         ]"
         :draggable="draggable && showFace"
