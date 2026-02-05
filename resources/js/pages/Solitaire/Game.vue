@@ -116,7 +116,12 @@ function handleNewGame() {
             <div class="mb-6">
                 <GameControls :move-count="gameState.moveCount" :score="gameState.score" @new-game="handleNewGame" />
             </div>
-            <div class="rounded-xl border border-[#38bdf8]/30 bg-[#0c1929]/80 p-6 backdrop-blur">
+            <div class="relative rounded-xl border border-[#38bdf8]/40 bg-[#0a1420] p-6 shadow-[0_0_40px_rgba(56,189,248,0.15)]">
+                <!-- Corner accents -->
+                <div class="absolute -left-1 -top-1 h-6 w-6 border-l-2 border-t-2 border-[#38bdf8]" />
+                <div class="absolute -right-1 -top-1 h-6 w-6 border-r-2 border-t-2 border-[#38bdf8]" />
+                <div class="absolute -bottom-1 -left-1 h-6 w-6 border-b-2 border-l-2 border-[#38bdf8]" />
+                <div class="absolute -bottom-1 -right-1 h-6 w-6 border-b-2 border-r-2 border-[#38bdf8]" />
                 <GameBoard
                     :state="gameState.state"
                     @draw="handleDraw"
