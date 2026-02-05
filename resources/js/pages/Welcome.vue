@@ -15,21 +15,21 @@ function startGame() {
     <div class="min-h-screen bg-[#0c1929] font-mono text-white">
         <!-- Header -->
         <header class="border-b border-[#1e3a5f]/50 bg-[#0c1929]/80 backdrop-blur">
-            <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-                <div class="flex items-center gap-4">
+            <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
+                <div class="flex items-center gap-2 sm:gap-4">
                     <div class="flex items-center gap-2">
-                        <span class="text-2xl">
+                        <span class="text-xl sm:text-2xl">
                             <span class="text-red-500">&hearts;</span>
                             <span class="text-[#38bdf8]">&spades;</span>
                         </span>
-                        <span class="text-lg font-bold tracking-wider">KLONDIKE</span>
+                        <span class="text-base font-bold tracking-wider sm:text-lg">KLONDIKE</span>
                     </div>
-                    <span class="text-xs tracking-widest text-slate-500">// DECK.READY</span>
+                    <span class="hidden text-xs tracking-widest text-slate-500 sm:inline">// DECK.READY</span>
                 </div>
-                <div class="flex items-center gap-8 text-xs tracking-widest text-slate-400">
-                    <a href="#rules" class="transition hover:text-white">RULES</a>
-                    <a href="#features" class="transition hover:text-white">FEATURES</a>
-                    <span class="rounded border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-3 py-1 text-[#38bdf8]">52 CARDS</span>
+                <div class="flex items-center gap-4 text-[10px] tracking-widest text-slate-400 sm:gap-8 sm:text-xs">
+                    <a href="#rules" class="hidden transition hover:text-white sm:inline">RULES</a>
+                    <a href="#features" class="hidden transition hover:text-white sm:inline">FEATURES</a>
+                    <span class="rounded border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-2 py-1 text-[#38bdf8] sm:px-3">52 CARDS</span>
                 </div>
             </div>
         </header>
@@ -40,66 +40,66 @@ function startGame() {
             <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e3a5f20_1px,transparent_1px),linear-gradient(to_bottom,#1e3a5f20_1px,transparent_1px)] bg-[size:40px_40px]" />
 
             <!-- Vertical text on left -->
-            <div class="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 transform text-[80px] font-bold tracking-widest text-[#1e3a5f]/30">
+            <div class="absolute left-0 top-1/2 hidden -translate-y-1/2 -rotate-90 transform text-[80px] font-bold tracking-widest text-[#1e3a5f]/30 lg:block">
                 PATIENCE
             </div>
 
-            <div class="relative mx-auto max-w-7xl px-6 py-16">
-                <div class="grid gap-12 lg:grid-cols-2">
+            <div class="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-16">
+                <div class="grid gap-8 sm:gap-12 lg:grid-cols-2">
                     <!-- Left content -->
-                    <div class="flex flex-col justify-center">
+                    <div class="flex flex-col justify-center text-center lg:text-left">
                         <!-- Status badge -->
-                        <div class="mb-4 flex items-center gap-2">
+                        <div class="mb-4 flex items-center justify-center gap-2 lg:justify-start">
                             <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                            <span class="text-xs tracking-widest text-emerald-400">SHUFFLED & READY</span>
+                            <span class="text-[10px] tracking-widest text-emerald-400 sm:text-xs">SHUFFLED & READY</span>
                         </div>
 
                         <!-- Main headline -->
-                        <h1 class="mb-6">
-                            <span class="block text-[72px] font-bold leading-none tracking-tighter text-white">CLASSIC</span>
-                            <span class="block text-[72px] font-bold leading-none tracking-tighter text-[#38bdf8]">SOLITAIRE</span>
+                        <h1 class="mb-4 sm:mb-6">
+                            <span class="block text-4xl font-bold leading-none tracking-tighter text-white sm:text-6xl lg:text-[72px]">CLASSIC</span>
+                            <span class="block text-4xl font-bold leading-none tracking-tighter text-[#38bdf8] sm:text-6xl lg:text-[72px]">SOLITAIRE</span>
                         </h1>
 
                         <!-- Description -->
-                        <div class="mb-8 border-l-2 border-slate-600 pl-4">
-                            <p class="max-w-md text-sm leading-relaxed text-slate-400">
+                        <div class="mx-auto mb-6 border-l-2 border-slate-600 pl-4 text-left sm:mb-8 lg:mx-0">
+                            <p class="max-w-md text-xs leading-relaxed text-slate-400 sm:text-sm">
                                 The timeless single-player card game. Build four foundation piles from Ace to King.
                                 Stack cards in descending order, alternating colors. No downloads, no accounts.
                             </p>
                         </div>
 
                         <!-- CTA Button -->
-                        <div class="flex gap-4">
+                        <div class="flex justify-center gap-4 lg:justify-start">
                             <button
                                 @click="startGame"
-                                class="group flex items-center gap-3 bg-[#38bdf8] px-8 py-4 font-semibold tracking-wider text-[#0c1929] transition hover:bg-[#7dd3fc]"
+                                class="group flex items-center gap-2 bg-[#38bdf8] px-6 py-3 text-sm font-semibold tracking-wider text-[#0c1929] transition hover:bg-[#7dd3fc] sm:gap-3 sm:px-8 sm:py-4 sm:text-base"
                             >
                                 DEAL CARDS
-                                <svg class="h-5 w-5 transition group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-4 w-4 transition group-hover:translate-x-1 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
                             </button>
                         </div>
 
                         <!-- Quick stats -->
-                        <div class="mt-12 flex gap-8 text-xs tracking-widest text-slate-500">
+                        <div class="mt-8 flex justify-center gap-4 text-[10px] tracking-widest text-slate-500 sm:mt-12 sm:gap-8 sm:text-xs lg:justify-start">
                             <div>
-                                <span class="text-2xl font-bold text-white">7</span>
-                                <span class="ml-2">TABLEAUS</span>
+                                <span class="text-xl font-bold text-white sm:text-2xl">7</span>
+                                <span class="ml-1 sm:ml-2">TABLEAUS</span>
                             </div>
                             <div>
-                                <span class="text-2xl font-bold text-white">4</span>
-                                <span class="ml-2">FOUNDATIONS</span>
+                                <span class="text-xl font-bold text-white sm:text-2xl">4</span>
+                                <span class="ml-1 sm:ml-2">FOUNDATIONS</span>
                             </div>
                             <div>
-                                <span class="text-2xl font-bold text-white">1</span>
-                                <span class="ml-2">DRAW MODE</span>
+                                <span class="text-xl font-bold text-white sm:text-2xl">1</span>
+                                <span class="ml-1 sm:ml-2">DRAW</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Right panel - Card visualization -->
-                    <div class="flex items-center justify-center">
+                    <div class="hidden items-center justify-center lg:flex">
                         <div class="relative w-full max-w-md">
                             <!-- Card display panel -->
                             <div class="border border-[#38bdf8]/30 bg-[#0c1929]/80 p-8 backdrop-blur">
@@ -165,58 +165,58 @@ function startGame() {
             </div>
 
             <!-- Feature badges bar -->
-            <div id="features" class="border-y border-[#1e3a5f] bg-[#1e3a5f]/20 py-4">
-                <div class="mx-auto flex max-w-7xl items-center justify-between px-6">
-                    <div class="flex items-center gap-3 text-[#38bdf8]">
-                        <span class="text-lg">&spades;</span>
-                        <span class="text-sm tracking-widest">DRAG & DROP</span>
+            <div id="features" class="border-y border-[#1e3a5f] bg-[#1e3a5f]/20 py-3 sm:py-4">
+                <div class="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 sm:flex sm:items-center sm:justify-between sm:gap-0 sm:px-6">
+                    <div class="flex items-center justify-center gap-2 text-[#38bdf8] sm:gap-3">
+                        <span class="text-base sm:text-lg">&spades;</span>
+                        <span class="text-[10px] tracking-widest sm:text-sm">DRAG & DROP</span>
                     </div>
-                    <div class="h-4 w-px bg-[#1e3a5f]" />
-                    <div class="flex items-center gap-3 text-[#38bdf8]">
-                        <span class="text-lg text-red-500">&hearts;</span>
-                        <span class="text-sm tracking-widest">AUTO SAVE</span>
+                    <div class="hidden h-4 w-px bg-[#1e3a5f] sm:block" />
+                    <div class="flex items-center justify-center gap-2 text-[#38bdf8] sm:gap-3">
+                        <span class="text-base text-red-500 sm:text-lg">&hearts;</span>
+                        <span class="text-[10px] tracking-widest sm:text-sm">AUTO SAVE</span>
                     </div>
-                    <div class="h-4 w-px bg-[#1e3a5f]" />
-                    <div class="flex items-center gap-3 text-[#38bdf8]">
-                        <span class="text-lg text-red-500">&diams;</span>
-                        <span class="text-sm tracking-widest">MOVE COUNTER</span>
+                    <div class="hidden h-4 w-px bg-[#1e3a5f] sm:block" />
+                    <div class="flex items-center justify-center gap-2 text-[#38bdf8] sm:gap-3">
+                        <span class="text-base text-red-500 sm:text-lg">&diams;</span>
+                        <span class="text-[10px] tracking-widest sm:text-sm">MOVE COUNTER</span>
                     </div>
-                    <div class="h-4 w-px bg-[#1e3a5f]" />
-                    <div class="flex items-center gap-3 text-[#38bdf8]">
-                        <span class="text-lg">&clubs;</span>
-                        <span class="text-sm tracking-widest">INSTANT PLAY</span>
+                    <div class="hidden h-4 w-px bg-[#1e3a5f] sm:block" />
+                    <div class="flex items-center justify-center gap-2 text-[#38bdf8] sm:gap-3">
+                        <span class="text-base sm:text-lg">&clubs;</span>
+                        <span class="text-[10px] tracking-widest sm:text-sm">INSTANT PLAY</span>
                     </div>
                 </div>
             </div>
 
             <!-- Rules section -->
-            <div id="rules" class="mx-auto max-w-7xl px-6 py-16">
-                <div class="grid gap-8 md:grid-cols-3">
+            <div id="rules" class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-16">
+                <div class="grid gap-6 sm:gap-8 md:grid-cols-3">
                     <!-- Rule 1 -->
-                    <div class="border-l-2 border-[#38bdf8]/30 pl-6">
-                        <span class="text-xs tracking-widest text-[#38bdf8]">RULE-01 // TABLEAU</span>
-                        <h3 class="mb-4 mt-2 text-2xl font-bold tracking-tight">BUILD DOWN</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">
+                    <div class="border-l-2 border-[#38bdf8]/30 pl-4 sm:pl-6">
+                        <span class="text-[10px] tracking-widest text-[#38bdf8] sm:text-xs">RULE-01 // TABLEAU</span>
+                        <h3 class="mb-2 mt-1 text-xl font-bold tracking-tight sm:mb-4 sm:mt-2 sm:text-2xl">BUILD DOWN</h3>
+                        <p class="text-xs leading-relaxed text-slate-400 sm:text-sm">
                             Stack cards in descending order, alternating between red and black suits.
                             King through Ace.
                         </p>
                     </div>
 
                     <!-- Rule 2 -->
-                    <div class="border-l-2 border-[#38bdf8]/30 pl-6">
-                        <span class="text-xs tracking-widest text-[#38bdf8]">RULE-02 // FOUNDATION</span>
-                        <h3 class="mb-4 mt-2 text-2xl font-bold tracking-tight">BUILD UP</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">
+                    <div class="border-l-2 border-[#38bdf8]/30 pl-4 sm:pl-6">
+                        <span class="text-[10px] tracking-widest text-[#38bdf8] sm:text-xs">RULE-02 // FOUNDATION</span>
+                        <h3 class="mb-2 mt-1 text-xl font-bold tracking-tight sm:mb-4 sm:mt-2 sm:text-2xl">BUILD UP</h3>
+                        <p class="text-xs leading-relaxed text-slate-400 sm:text-sm">
                             Move cards to foundations by suit, ascending from Ace to King.
                             Complete all four to win.
                         </p>
                     </div>
 
                     <!-- Rule 3 -->
-                    <div class="border-l-2 border-[#38bdf8]/30 pl-6">
-                        <span class="text-xs tracking-widest text-[#38bdf8]">RULE-03 // STOCK</span>
-                        <h3 class="mb-4 mt-2 text-2xl font-bold tracking-tight">DRAW ONE</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">
+                    <div class="border-l-2 border-[#38bdf8]/30 pl-4 sm:pl-6">
+                        <span class="text-[10px] tracking-widest text-[#38bdf8] sm:text-xs">RULE-03 // STOCK</span>
+                        <h3 class="mb-2 mt-1 text-xl font-bold tracking-tight sm:mb-4 sm:mt-2 sm:text-2xl">DRAW ONE</h3>
+                        <p class="text-xs leading-relaxed text-slate-400 sm:text-sm">
                             Click the stock pile to draw cards. When empty, click to recycle
                             the waste pile back to stock.
                         </p>
@@ -228,8 +228,17 @@ function startGame() {
         <!-- Footer -->
         <footer class="border-t border-[#1e3a5f]/50 py-6">
             <div class="mx-auto max-w-7xl px-6">
-                <div class="flex items-center justify-between text-xs tracking-widest text-slate-500">
-                    <span>BUILT WITH LARAVEL + INERTIA + VUE</span>
+                <div class="flex flex-col items-center justify-between gap-4 text-xs tracking-widest text-slate-500 sm:flex-row">
+                    <span class="text-center sm:text-left">BUILT WITH LARAVEL + INERTIA + VUE</span>
+                    <span class="text-center text-slate-600">
+                        Design inspired by
+                        <a
+                            href="https://x.com/rm_codes"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-[#38bdf8] transition hover:text-[#7dd3fc]"
+                        >@rm_codes</a>
+                    </span>
                     <span class="flex items-center gap-2">
                         <span class="text-red-500">&hearts;</span>
                         <span class="text-red-500">&diams;</span>

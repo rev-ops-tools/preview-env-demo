@@ -15,7 +15,7 @@ const suits: Suit[] = ['hearts', 'diamonds', 'clubs', 'spades'];
 </script>
 
 <template>
-    <div class="flex gap-3">
+    <div class="flex gap-[var(--card-gap,12px)]">
         <Foundation
             v-for="suit in suits"
             :key="suit"

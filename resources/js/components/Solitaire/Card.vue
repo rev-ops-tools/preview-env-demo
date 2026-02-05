@@ -38,7 +38,7 @@ function handleDragStart(event: DragEvent) {
 
 <template>
     <div
-        class="flex h-[100px] w-[70px] select-none flex-col rounded-lg border shadow-lg transition-all duration-150"
+        class="card flex h-[var(--card-height,100px)] w-[var(--card-width,70px)] select-none flex-col rounded-md border shadow-md transition-all duration-150 sm:rounded-lg sm:shadow-lg"
         :class="[
             showFace
                 ? 'cursor-pointer border-slate-300 bg-white hover:shadow-xl'
@@ -52,26 +52,26 @@ function handleDragStart(event: DragEvent) {
         @dblclick="emit('dblclick')"
     >
         <template v-if="showFace && card">
-            <div class="flex flex-1 flex-col p-1.5" :class="isRed ? 'text-red-600' : 'text-slate-800'">
+            <div class="flex flex-1 flex-col p-1 sm:p-1.5" :class="isRed ? 'text-red-600' : 'text-slate-800'">
                 <div class="flex items-center justify-between">
-                    <span class="text-sm font-bold leading-none">{{ rankDisplay }}</span>
-                    <span class="text-base leading-none">{{ suitSymbol }}</span>
+                    <span class="text-xs font-bold leading-none sm:text-sm">{{ rankDisplay }}</span>
+                    <span class="text-sm leading-none sm:text-base">{{ suitSymbol }}</span>
                 </div>
                 <div class="flex flex-1 items-center justify-center">
-                    <span class="text-3xl">{{ suitSymbol }}</span>
+                    <span class="text-xl sm:text-3xl">{{ suitSymbol }}</span>
                 </div>
                 <div class="flex rotate-180 items-center justify-between">
-                    <span class="text-sm font-bold leading-none">{{ rankDisplay }}</span>
-                    <span class="text-base leading-none">{{ suitSymbol }}</span>
+                    <span class="text-xs font-bold leading-none sm:text-sm">{{ rankDisplay }}</span>
+                    <span class="text-sm leading-none sm:text-base">{{ suitSymbol }}</span>
                 </div>
             </div>
         </template>
         <template v-else>
             <div class="flex h-full items-center justify-center">
-                <div class="flex flex-col items-center gap-1">
-                    <div class="h-1 w-10 rounded bg-[#38bdf8]/30" />
-                    <div class="h-1 w-8 rounded bg-[#38bdf8]/30" />
-                    <div class="h-1 w-10 rounded bg-[#38bdf8]/30" />
+                <div class="flex flex-col items-center gap-0.5 sm:gap-1">
+                    <div class="h-0.5 w-6 rounded bg-[#38bdf8]/30 sm:h-1 sm:w-10" />
+                    <div class="h-0.5 w-5 rounded bg-[#38bdf8]/30 sm:h-1 sm:w-8" />
+                    <div class="h-0.5 w-6 rounded bg-[#38bdf8]/30 sm:h-1 sm:w-10" />
                 </div>
             </div>
         </template>

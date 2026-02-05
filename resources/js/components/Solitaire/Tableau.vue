@@ -31,23 +31,21 @@ function handleDrop(event: DragEvent) {
 
 <template>
     <div
-        class="relative w-[70px]"
+        class="relative w-[var(--card-width,70px)]"
         @dragover="handleDragOver"
         @drop="handleDrop"
     >
         <div
             v-if="cards.length === 0"
-            class="flex h-[100px] w-full items-center justify-center rounded-lg border-2 border-dashed border-[#38bdf8]/20 bg-[#1e3a5f]/10"
+            class="flex h-[var(--card-height,100px)] w-full items-center justify-center rounded-md border-2 border-dashed border-[#38bdf8]/20 bg-[#1e3a5f]/10 sm:rounded-lg"
         >
-            <span class="text-2xl font-bold text-[#38bdf8]/30">K</span>
+            <span class="text-lg font-bold text-[#38bdf8]/30 sm:text-2xl">K</span>
         </div>
         <CardStack
             v-else
             :cards="cards"
             :location="{ type: 'tableau', index }"
             :draggable-from="firstFaceUpIndex"
-            :offset="4"
-            :face-up-offset="20"
             @card-drag-start="(event, cardIndex, cards) => emit('cardDragStart', event, cardIndex, cards)"
             @card-dbl-click="(cardIndex) => emit('cardDblClick', cardIndex)"
         />

@@ -20,15 +20,12 @@ const emit = defineEmits<{
     wasteDoubleClick: [card: Card];
     tableauDoubleClick: [tableauIndex: number, cardIndex: number];
 }>();
-
-// Fixed height for tableau area: 6 face-down (6*4=24) + 12 face-up offsets (12*20=240) + card height (100) = 364px
-const TABLEAU_AREA_HEIGHT = 364;
 </script>
 
 <template>
-    <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4 sm:gap-8">
         <div class="flex justify-between">
-            <div class="flex gap-3">
+            <div class="flex gap-[var(--card-gap,12px)]">
                 <Stock :cards="state.stock" @draw="emit('draw')" @reset="emit('resetStock')" />
                 <Waste
                     :cards="state.waste"
@@ -42,7 +39,8 @@ const TABLEAU_AREA_HEIGHT = 364;
                 @card-drag-start="(suit, event, card) => emit('foundationDragStart', suit, event, card)"
             />
         </div>
-        <div :style="{ minHeight: `${TABLEAU_AREA_HEIGHT}px` }">
+        <!-- Responsive min-height for tableau area -->
+        <div class="min-h-[220px] sm:min-h-[280px] md:min-h-[364px]">
             <Tableaus
                 :tableaus="state.tableaus"
                 @drop="(index, event) => emit('moveToTableau', index, event)"

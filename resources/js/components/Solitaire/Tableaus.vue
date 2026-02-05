@@ -14,7 +14,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-    <div class="flex gap-3">
+    <div class="flex justify-between gap-[var(--card-gap,12px)] sm:justify-start">
         <Tableau
             v-for="(tableau, index) in tableaus"
             :key="index"

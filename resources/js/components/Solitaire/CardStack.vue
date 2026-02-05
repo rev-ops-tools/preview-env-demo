@@ -5,14 +5,10 @@ import Card from './Card.vue';
 const props = withDefaults(
     defineProps<{
         cards: CardType[];
-        offset?: number;
-        faceUpOffset?: number;
         location: MoveLocation;
         draggableFrom?: number;
     }>(),
     {
-        offset: 4,
-        faceUpOffset: 20,
         draggableFrom: -1,
     },
 );
@@ -23,10 +19,21 @@ const emit = defineEmits<{
     cardDblClick: [cardIndex: number];
 }>();
 
-function getOffset(index: number): number {
-    if (index === 0) return 0;
+function getOffset(index: number): string {
+    if (index === 0) return '0px';
     const prevCard = props.cards[index - 1];
-    return prevCard?.faceUp ? props.faceUpOffset : props.offset;
+    return prevCard?.faceUp ? 'var(--card-face-up-offset, 20px)' : 'var(--card-offset, 4px)';
+}
+
+function getTopPosition(index: number): string {
+    // Calculate cumulative offset using CSS calc
+    let calc = '0px';
+    for (let i = 1; i <= index; i++) {
+        const prevCard = props.cards[i - 1];
+        const offset = prevCard?.faceUp ? 'var(--card-face-up-offset, 20px)' : 'var(--card-offset, 4px)';
+        calc = `calc(${calc} + ${offset})`;
+    }
+    return calc;
 }
 
 function isDraggable(index: number): boolean {
@@ -46,7 +53,7 @@ function handleDragStart(event: DragEvent, cardIndex: number) {
             v-for="(card, index) in cards"
             :key="`${card.suit}-${card.rank}-${index}`"
             class="absolute left-0"
-            :style="{ top: `${cards.slice(0, index).reduce((acc, _, i) => acc + getOffset(i + 1), 0)}px` }"
+            :style="{ top: getTopPosition(index) }"
         >
             <Card
                 :card="card"

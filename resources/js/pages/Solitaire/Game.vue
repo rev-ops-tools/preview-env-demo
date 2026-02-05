@@ -116,7 +116,7 @@ function handleNewGame() {
             <div class="mb-6">
                 <GameControls :move-count="gameState.moveCount" :score="gameState.score" @new-game="handleNewGame" />
             </div>
-            <div class="relative rounded-xl border border-[#38bdf8]/40 bg-[#0a1420] p-6 shadow-[0_0_40px_rgba(56,189,248,0.15)]">
+            <div class="card-size relative rounded-xl border border-[#38bdf8]/40 bg-[#0a1420] p-3 shadow-[0_0_40px_rgba(56,189,248,0.15)] sm:p-6">
                 <!-- Corner accents -->
                 <div class="absolute -left-1 -top-1 h-6 w-6 border-l-2 border-t-2 border-[#38bdf8]" />
                 <div class="absolute -right-1 -top-1 h-6 w-6 border-r-2 border-t-2 border-[#38bdf8]" />
@@ -143,5 +143,34 @@ function handleNewGame() {
 <style scoped>
 * {
     font-family: 'JetBrains Mono', monospace;
+}
+
+/* Responsive card sizing */
+:deep(.card-size) {
+    --card-width: 48px;
+    --card-height: 68px;
+    --card-offset: 3px;
+    --card-face-up-offset: 14px;
+    --card-gap: 4px;
+}
+
+@media (min-width: 480px) {
+    :deep(.card-size) {
+        --card-width: 58px;
+        --card-height: 82px;
+        --card-offset: 3px;
+        --card-face-up-offset: 16px;
+        --card-gap: 6px;
+    }
+}
+
+@media (min-width: 640px) {
+    :deep(.card-size) {
+        --card-width: 70px;
+        --card-height: 100px;
+        --card-offset: 4px;
+        --card-face-up-offset: 20px;
+        --card-gap: 12px;
+    }
 }
 </style>

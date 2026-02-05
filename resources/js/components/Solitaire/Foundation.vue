@@ -38,16 +38,16 @@ function handleDragStart(event: DragEvent) {
 
 <template>
     <div
-        class="relative h-[100px] w-[70px]"
+        class="relative h-[var(--card-height,100px)] w-[var(--card-width,70px)]"
         @dragover="handleDragOver"
         @drop="handleDrop"
     >
         <div
             v-if="!topCard"
-            class="flex h-full w-full items-center justify-center rounded-lg border-2 border-dashed transition-colors"
+            class="flex h-full w-full items-center justify-center rounded-md border-2 border-dashed transition-colors sm:rounded-lg"
             :class="isRed ? 'border-red-500/30 bg-red-500/10' : 'border-slate-400/30 bg-slate-400/10'"
         >
-            <span class="text-3xl" :class="isRed ? 'text-red-500/40' : 'text-slate-400/40'">
+            <span class="text-xl sm:text-3xl" :class="isRed ? 'text-red-500/40' : 'text-slate-400/40'">
                 {{ suitSymbol }}
             </span>
         </div>
