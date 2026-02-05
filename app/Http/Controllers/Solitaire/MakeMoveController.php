@@ -6,6 +6,7 @@ use App\Actions\Solitaire\MakeMoveAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Solitaire\MakeMoveRequest;
 use App\Models\SolitaireGame;
+use App\Services\Solitaire\AutoCompleteService;
 use Illuminate\Http\JsonResponse;
 use InvalidArgumentException;
 
@@ -15,6 +16,7 @@ class MakeMoveController extends Controller
         MakeMoveRequest $request,
         SolitaireGame $game,
         MakeMoveAction $makeMoveAction,
+        AutoCompleteService $autoCompleteService,
     ): JsonResponse {
         try {
             $game = $makeMoveAction->execute(
@@ -32,6 +34,7 @@ class MakeMoveController extends Controller
                     'moveCount' => $game->move_count,
                     'score' => $game->score,
                     'state' => $game->state,
+                    'canAutoComplete' => $autoCompleteService->canAutoComplete($game->state),
                 ],
             ]);
         } catch (InvalidArgumentException $e) {

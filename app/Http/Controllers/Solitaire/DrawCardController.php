@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Solitaire;
 use App\Actions\Solitaire\DrawCardAction;
 use App\Http\Controllers\Controller;
 use App\Models\SolitaireGame;
+use App\Services\Solitaire\AutoCompleteService;
 use Illuminate\Http\JsonResponse;
 use InvalidArgumentException;
 
@@ -13,6 +14,7 @@ class DrawCardController extends Controller
     public function __invoke(
         SolitaireGame $game,
         DrawCardAction $drawCardAction,
+        AutoCompleteService $autoCompleteService,
     ): JsonResponse {
         try {
             $game = $drawCardAction->execute($game);
@@ -25,6 +27,7 @@ class DrawCardController extends Controller
                     'moveCount' => $game->move_count,
                     'score' => $game->score,
                     'state' => $game->state,
+                    'canAutoComplete' => $autoCompleteService->canAutoComplete($game->state),
                 ],
             ]);
         } catch (InvalidArgumentException $e) {
