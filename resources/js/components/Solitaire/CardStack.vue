@@ -7,9 +7,11 @@ const props = withDefaults(
         cards: CardType[];
         location: MoveLocation;
         draggableFrom?: number;
+        highlightedCardIndex?: number | null;
     }>(),
     {
         draggableFrom: -1,
+        highlightedCardIndex: null,
     },
 );
 
@@ -58,6 +60,7 @@ function handleDragStart(event: DragEvent, cardIndex: number) {
             <Card
                 :card="card"
                 :draggable="isDraggable(index)"
+                :highlighted="highlightedCardIndex !== null && index >= highlightedCardIndex"
                 @dragstart="handleDragStart($event, index)"
                 @click="emit('cardClick', index)"
                 @dblclick="emit('cardDblClick', index)"

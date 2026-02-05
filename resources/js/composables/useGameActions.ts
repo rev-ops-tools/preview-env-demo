@@ -1,4 +1,4 @@
-import type { Card, Game, GameResponse, MoveLocation, MovePayload } from '@/types/solitaire';
+import type { Card, Game, GameResponse, Hint, HintResponse, MoveLocation, MovePayload } from '@/types/solitaire';
 import { ref } from 'vue';
 
 export function useGameActions(gameId: string) {
@@ -97,6 +97,29 @@ export function useGameActions(gameId: string) {
         }
     }
 
+    async function getHint(): Promise<{ hint: Hint | null; shouldDraw: boolean } | null> {
+        try {
+            const response = await fetch(`/game/${gameId}/hint`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                },
+            });
+
+            const data: HintResponse = await response.json();
+
+            if (!data.success) {
+                error.value = data.error ?? 'Failed to get hint';
+                return null;
+            }
+
+            return { hint: data.hint, shouldDraw: data.shouldDraw };
+        } catch (e) {
+            error.value = e instanceof Error ? e.message : 'An error occurred';
+            return null;
+        }
+    }
+
     async function createNewGame(): Promise<void> {
         const form = document.createElement('form');
         form.method = 'POST';
@@ -118,6 +141,7 @@ export function useGameActions(gameId: string) {
         makeMove,
         drawCard,
         resetStock,
+        getHint,
         createNewGame,
     };
 }

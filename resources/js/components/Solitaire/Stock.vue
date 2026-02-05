@@ -2,9 +2,15 @@
 import type { Card as CardType } from '@/types/solitaire';
 import Card from './Card.vue';
 
-defineProps<{
-    cards: CardType[];
-}>();
+const props = withDefaults(
+    defineProps<{
+        cards: CardType[];
+        highlighted?: boolean;
+    }>(),
+    {
+        highlighted: false,
+    },
+);
 
 const emit = defineEmits<{
     draw: [];
@@ -25,6 +31,7 @@ function handleClick(hasCards: boolean) {
         <div
             v-if="cards.length === 0"
             class="flex h-full w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-[#38bdf8]/30 bg-[#1e3a5f]/20 transition-colors hover:border-[#38bdf8]/50 hover:bg-[#1e3a5f]/30 sm:rounded-lg"
+            :class="highlighted ? 'ring-4 ring-amber-400 ring-offset-2 ring-offset-[#0c1929] animate-pulse shadow-[0_0_20px_rgba(251,191,36,0.7)]' : ''"
             @click="handleClick(false)"
         >
             <svg class="h-6 w-6 text-[#38bdf8]/50 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,7 +49,7 @@ function handleClick(hasCards: boolean) {
                 class="absolute"
                 :style="{ top: `${index * 2}px`, left: `${index * 2}px` }"
             >
-                <Card :card="null" />
+                <Card :card="null" :highlighted="props.highlighted && index === Math.min(cards.length, 3) - 1" />
             </div>
         </div>
     </div>
